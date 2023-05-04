@@ -291,14 +291,19 @@ public class HeroKnight : MonoBehaviour {
 
     public void Die()
     {
-        Debug.Log("I am Dead!");
-        health =0;
-        onPlayerDeath?.Invoke();
-        // if(m_animator)
-        //     m_animator.SetTrigger("Death");
+        if(!Death)
+        {
+            Debug.Log("I am Dead!");
+            health =0;
+            onPlayerDeath?.Invoke();
+            // if(m_animator)
+            //     m_animator.SetTrigger("Death");
 
-        //StartCoroutine(delayDeath(m_animator.GetCurrentAnimatorStateInfo(0).length));
-       StartCoroutine(delayDeath(.85f));
+            //StartCoroutine(delayDeath(m_animator.GetCurrentAnimatorStateInfo(0).length));
+        Death = true;
+        StartCoroutine(delayDeath(.85f));
+        }
+        
     }
 
 
